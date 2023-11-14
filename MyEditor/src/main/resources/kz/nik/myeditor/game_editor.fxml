@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112-ea" fx:controller="kz.nik.myeditor.Controller">
+    <fx:define>
+        <ToggleGroup fx:id="lbrushes" />
+        <ToggleGroup fx:id="rbrushes" />
+    </fx:define>
+    <ScrollPane>
+        <Canvas fx:id="canvas" height="400" width="400" />
+    </ScrollPane>
+    <VBox prefWidth="400">
+        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: #000000;" text="Панель инструментов" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            </VBox.margin>
+        </Label>
+        <TitledPane text="Administration">
+            <VBox spacing="5">
+                <Button maxWidth="Infinity" text="Create New Map" />
+                <Button maxWidth="Infinity" onAction="#loadMap" text="Load Map > map01.txt" />
+                <Button maxWidth="Infinity" onAction="#saveMap" text="Save Map > map01.txt" />
+                <Button maxWidth="Infinity" onAction="#quit" text="Close Editor" />
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Map Settings">
+            <VBox spacing="5">
+                <HBox>
+                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="COLUMNS: " HBox.hgrow="ALWAYS" />
+                    <Spinner fx:id="sizeXSpinner">
+                        <valueFactory>
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory max="100" min="10" />
+                        </valueFactory>
+                    </Spinner>
+                </HBox>
+                <HBox>
+                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ROWS: " HBox.hgrow="ALWAYS" />
+                    <Spinner fx:id="sizeYSpinner">
+                        <valueFactory>
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory max="100" min="10" />
+                        </valueFactory>
+                    </Spinner>
+                </HBox>
+                <!--<Spinner fx:id="sizeYSpinner" value="1"/>-->
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Brushes">
+            <HBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: #000000;" text="LMB" textFill="WHITE">
+                        <font>
+                            <Font name="Arial Bold" size="18.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton text="Space" toggleGroup="$lbrushes"/>
+                    <RadioButton text="Grass" toggleGroup="$lbrushes" />
+                    <RadioButton selected="true" text="Wall" toggleGroup="$lbrushes" />
+                    <RadioButton text="Water" toggleGroup="$lbrushes" />
+                    <RadioButton text="Portal" toggleGroup="$lbrushes" />
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: #000000;" text="RMB" textFill="WHITE">
+                        <font>
+                            <Font name="Arial Bold" size="18.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton text="Space" toggleGroup="$rbrushes"/>
+                    <RadioButton selected="true" text="Grass" toggleGroup="$rbrushes" />
+                    <RadioButton text="Wall" toggleGroup="$rbrushes" />
+                    <RadioButton text="Water" toggleGroup="$rbrushes" />
+                    <RadioButton text="Portal" toggleGroup="$rbrushes" />
+                </VBox>
+            </HBox>
+        </TitledPane>
+    </VBox>
+</HBox>
